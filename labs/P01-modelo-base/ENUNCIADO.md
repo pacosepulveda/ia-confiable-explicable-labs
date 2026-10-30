@@ -2,7 +2,7 @@
 
 ## Escenario
 
-Aurea Finance está preparando un sistema de apoyo a la evaluación de solicitudes de crédito.
+Velora Finance está preparando un sistema de apoyo a la evaluación de solicitudes de crédito.
 
 La entidad dispone de un histórico sintético de solicitudes con información económica y financiera del solicitante. La variable `default` indica si la operación terminó en impago:
 
@@ -13,8 +13,8 @@ En esta práctica se construirá un primer modelo de riesgo y se analizará su c
 
 ## Archivos
 
-- `data/aurea_credit.csv.gz`
-- `labs/P01-modelo-base/P01_Aurea_Modelo_Base.ipynb`
+- `data/velora_credit.csv.gz`
+- `labs/P01-modelo-base/P01_Velora_Modelo_Base.ipynb`
 
 ## Variables
 
