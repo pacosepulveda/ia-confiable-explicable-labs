@@ -1,12 +1,12 @@
 # P01 — Construcción y evaluación del modelo base
 
-Laboratorio basado en el caso **Aurea Finance**.
+Laboratorio basado en el caso **Velora Finance**.
 
 ## Archivos
 
 - `ENUNCIADO.md`
-- `P01_Aurea_Modelo_Base.ipynb`
-- `../../data/aurea_credit.csv.gz`
+- `P01_Velora_Modelo_Base.ipynb`
+- `../../data/velora_credit.csv.gz`
 
 ## Contenido
 
@@ -55,13 +55,13 @@ default
 El dataset incluido contiene 3.000 solicitudes sintéticas y se genera de forma reproducible con semilla `42` mediante:
 
 ```bash
-python resources/generate_aurea_credit.py
+python resources/generate_velora_credit.py
 ```
 
 El fichero generado es:
 
 ```text
-data/aurea_credit.csv.gz
+data/velora_credit.csv.gz
 ```
 
 ## Estado
