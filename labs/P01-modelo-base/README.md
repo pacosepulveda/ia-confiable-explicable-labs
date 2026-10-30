@@ -2,19 +2,11 @@
 
 Laboratorio basado en el caso **Aurea Finance**.
 
-## Datos
+## Archivos
 
-Generar el dataset desde la raíz del repositorio:
-
-```bash
-python resources/generate_aurea_credit.py
-```
-
-Se crea:
-
-```text
-data/aurea_credit.csv.gz
-```
+- `ENUNCIADO.md`
+- `P01_Aurea_Modelo_Base.ipynb`
+- `../../data/aurea_credit.csv.gz`
 
 ## Contenido
 
@@ -29,11 +21,12 @@ data/aurea_credit.csv.gz
 - ROC-AUC;
 - PR-AUC;
 - probabilidades y threshold;
-- análisis de falsos positivos y falsos negativos.
+- comparación de falsos positivos y falsos negativos;
+- revisión de errores concretos del modelo.
 
-## Variables del modelo en P01
+## Variables del modelo
 
-Se utilizarán como predictores:
+Predictores utilizados en P01:
 
 ```text
 age
@@ -47,7 +40,7 @@ requested_amount
 savings_balance
 ```
 
-No se utilizarán como predictores:
+No se utilizan como predictores:
 
 ```text
 application_id
@@ -57,12 +50,24 @@ default
 
 `default` es la variable objetivo.
 
+## Dataset
+
+El dataset incluido contiene 3.000 solicitudes sintéticas y se genera de forma reproducible con semilla `42` mediante:
+
+```bash
+python resources/generate_aurea_credit.py
+```
+
+El fichero generado es:
+
+```text
+data/aurea_credit.csv.gz
+```
+
 ## Estado
 
-🚧 **En preparación.**
+✅ Enunciado y notebook del alumno preparados.
 
-Pendiente de añadir:
+Pendiente:
 
-- enunciado definitivo;
-- notebook del alumno;
 - solución del instructor.
