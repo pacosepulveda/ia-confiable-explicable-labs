@@ -1,12 +1,6 @@
 # Datos de Aurea Finance
 
-El fichero de trabajo se genera con:
-
-```bash
-python resources/generate_aurea_credit.py
-```
-
-El resultado es:
+El repositorio incluye:
 
 ```text
 data/aurea_credit.csv.gz
@@ -18,6 +12,12 @@ Puede cargarse directamente con pandas:
 import pandas as pd
 
 df = pd.read_csv("data/aurea_credit.csv.gz")
+```
+
+También puede regenerarse de forma reproducible desde la raíz del repositorio:
+
+```bash
+python resources/generate_aurea_credit.py
 ```
 
 ## Campos
@@ -39,6 +39,6 @@ df = pd.read_csv("data/aurea_credit.csv.gz")
 
 ## Tamaño y distribución
 
-La versión actual genera 3.000 solicitudes con semilla fija `42`.
+La versión actual contiene 3.000 solicitudes generadas con semilla fija `42`.
 
-La tasa global de `default` está alrededor del 12%, con diferencias entre los grupos A y B. `customer_group` no se utiliza como predictor en P01.
+La tasa global de `default` es aproximadamente del 11,6%. `customer_group` no se utiliza como predictor en P01.
