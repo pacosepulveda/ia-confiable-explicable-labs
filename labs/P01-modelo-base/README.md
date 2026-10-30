@@ -1,12 +1,12 @@
 # P01 — Construcción y evaluación del modelo base
 
-Esta práctica será el punto de partida técnico del caso **Aurea Finance**.
+Laboratorio basado en el caso **Aurea Finance**.
 
-## Objetivo provisional
+## Contenido previsto
 
-Construir y evaluar un primer modelo de riesgo de crédito y utilizar sus resultados para introducir de forma práctica:
-
+- carga y revisión del dataset;
 - separación train/test;
+- entrenamiento de un primer modelo de riesgo de crédito;
 - matriz de confusión;
 - accuracy;
 - precision;
@@ -15,10 +15,15 @@ Construir y evaluar un primer modelo de riesgo de crédito y utilizar sus result
 - ROC-AUC;
 - PR-AUC;
 - probabilidades y threshold;
-- coste de falsos positivos y falsos negativos.
+- análisis de falsos positivos y falsos negativos.
 
 ## Estado
 
-🚧 **En diseño.**
+🚧 **En preparación.**
 
-El enunciado definitivo, el dataset y el notebook se añadirán cuando quede validado el comportamiento que queremos obtener del dataset base. Ese mismo dataset deberá servir después para fairness y explicabilidad, por lo que no se generará de forma aislada.
+Pendiente de añadir:
+
+- dataset base;
+- enunciado definitivo;
+- notebook del alumno;
+- solución del instructor.
