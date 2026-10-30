@@ -1,14 +1,6 @@
 # IA Confiable y Explicable — Laboratorios
 
-Repositorio de prácticas del curso **Inteligencia Artificial Confiable y Explicable**.
-
-## Filosofía
-
-El curso sigue un enfoque **learn by doing**: las prácticas forman parte del aprendizaje y no son un apéndice de la teoría. Las slides introducen únicamente los conceptos necesarios para poder realizar la práctica inmediata.
-
-## Caso transversal
-
-El curso utiliza un caso técnico común: **Aurea Finance**, una entidad ficticia que incorpora progresivamente Machine Learning, explicabilidad, privacidad, RAG, agentes y controles de gobernanza.
+Repositorio de laboratorios del curso **Inteligencia Artificial Confiable y Explicable**.
 
 ## Estructura
 
@@ -19,16 +11,22 @@ resources/   Recursos auxiliares utilizados por varias prácticas
 data/        Datasets compartidos
 ```
 
-## Prácticas
+## Caso técnico
 
-Por ahora solo está activa la práctica **P01 — Construcción y evaluación del modelo base**. El resto se incorporará progresivamente a medida que se diseñe y valide el recorrido completo del curso.
+Los laboratorios utilizan **Aurea Finance** como escenario común cuando resulta adecuado para mantener continuidad entre prácticas.
 
-## Entornos previstos
+## Entornos
 
-Según la práctica se utilizará uno de estos entornos:
+Según las necesidades de cada laboratorio se podrá utilizar:
 
 - Google Colab
 - GitHub Codespaces
 - Entorno de laboratorio proporcionado por el instructor
 
-La elección del entorno se hará por necesidad técnica y reproducibilidad, no por uniformidad artificial.
+## Prácticas
+
+Actualmente está en preparación:
+
+- **P01 — Construcción y evaluación del modelo base**
+
+El resto de prácticas se añadirá progresivamente.
