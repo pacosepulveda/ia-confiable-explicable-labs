@@ -2,7 +2,21 @@
 
 Laboratorio basado en el caso **Aurea Finance**.
 
-## Contenido previsto
+## Datos
+
+Generar el dataset desde la raíz del repositorio:
+
+```bash
+python resources/generate_aurea_credit.py
+```
+
+Se crea:
+
+```text
+data/aurea_credit.csv.gz
+```
+
+## Contenido
 
 - carga y revisión del dataset;
 - separación train/test;
@@ -17,13 +31,38 @@ Laboratorio basado en el caso **Aurea Finance**.
 - probabilidades y threshold;
 - análisis de falsos positivos y falsos negativos.
 
+## Variables del modelo en P01
+
+Se utilizarán como predictores:
+
+```text
+age
+annual_income
+debt_ratio
+employment_months
+late_payments_12m
+credit_history_months
+existing_debt
+requested_amount
+savings_balance
+```
+
+No se utilizarán como predictores:
+
+```text
+application_id
+customer_group
+default
+```
+
+`default` es la variable objetivo.
+
 ## Estado
 
 🚧 **En preparación.**
 
 Pendiente de añadir:
 
-- dataset base;
 - enunciado definitivo;
 - notebook del alumno;
 - solución del instructor.
