@@ -1,9 +1,9 @@
-# Datos de Aurea Finance
+# Datos de Velora Finance
 
 El repositorio incluye:
 
 ```text
-data/aurea_credit.csv.gz
+data/velora_credit.csv.gz
 ```
 
 Puede cargarse directamente con pandas:
@@ -11,13 +11,13 @@ Puede cargarse directamente con pandas:
 ```python
 import pandas as pd
 
-df = pd.read_csv("data/aurea_credit.csv.gz")
+df = pd.read_csv("data/velora_credit.csv.gz")
 ```
 
 También puede regenerarse de forma reproducible desde la raíz del repositorio:
 
 ```bash
-python resources/generate_aurea_credit.py
+python resources/generate_velora_credit.py
 ```
 
 ## Campos
