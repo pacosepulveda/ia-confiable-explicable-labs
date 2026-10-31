@@ -1,4 +1,0 @@
-application_id,age,annual_income,debt_ratio,employment_months,late_payments_12m,credit_history_months,existing_debt,requested_amount,savings_balance,customer_group,default
-VF-000001,52,42699,0.41,52,1,349,10042,14671,10406,B,0
-VF-000002,35,24698,0.534,113,0,264,12528,8647,5675,A,0
-VF-000003,49,49309,0.418,54,0,349,13833,14015,4543,B,0
