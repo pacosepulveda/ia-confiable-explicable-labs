@@ -1,0 +1,71 @@
+name: Reconstruct M04 notebooks
+
+on:
+  push:
+    paths:
+      - '.m04-upload/**'
+      - '.github/workflows/reconstruct-m04.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reconstruct notebooks
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ ! -f .m04-upload/P05.ipynb.gz.b64 ]; then
+            echo 'Payload already consumed; nothing to do.'
+            exit 0
+          fi
+
+          mkdir -p modulo-04-ia-generativa/P05-rag-confiable
+          mkdir -p modulo-04-ia-generativa/P06-agentes-confiables
+
+          base64 -d .m04-upload/P05.ipynb.gz.b64 \
+            | gzip -d \
+            > modulo-04-ia-generativa/P05-rag-confiable/P05_Velora_RAG_Confiable.ipynb
+
+          cat .m04-upload/P06.part1 .m04-upload/P06.part2 \
+            | base64 -d \
+            | gzip -d \
+            > modulo-04-ia-generativa/P06-agentes-confiables/P06_Velora_Agentes_Bedrock_Mantle.ipynb
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for p in [
+              Path('modulo-04-ia-generativa/P05-rag-confiable/P05_Velora_RAG_Confiable.ipynb'),
+              Path('modulo-04-ia-generativa/P06-agentes-confiables/P06_Velora_Agentes_Bedrock_Mantle.ipynb'),
+          ]:
+              json.loads(p.read_text(encoding='utf-8'))
+              print('Valid notebook:', p)
+          PY
+
+          rm -rf .m04-upload
+
+      - name: Commit reconstructed notebooks
+        shell: bash
+        run: |
+          if [ ! -d modulo-04-ia-generativa/P05-rag-confiable ]; then
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo 'No changes.'
+            exit 0
+          fi
+
+          git commit -m 'Add M04 RAG and agent notebooks'
+          git push
