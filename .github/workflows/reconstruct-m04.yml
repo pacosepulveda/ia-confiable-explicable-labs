@@ -3,7 +3,7 @@ name: Reconstruct M04 notebooks
 on:
   push:
     paths:
-      - '.m04-upload/**'
+      - '.m04-raw/**'
       - '.github/workflows/reconstruct-m04.yml'
   workflow_dispatch:
 
@@ -21,40 +21,54 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ ! -f .m04-upload/P05.ipynb.gz.b64 ]; then
-            echo 'Payload already consumed; nothing to do.'
+          if [ ! -f .m04-raw/P05.00 ]; then
+            echo 'Raw payload already consumed; nothing to do.'
             exit 0
           fi
 
           mkdir -p modulo-04-ia-generativa/P05-rag-confiable
           mkdir -p modulo-04-ia-generativa/P06-agentes-confiables
 
-          base64 -d .m04-upload/P05.ipynb.gz.b64 \
-            | gzip -d \
+          cat \
+            .m04-raw/P05.00 \
+            .m04-raw/P05.01 \
+            .m04-raw/P05.02 \
+            .m04-raw/P05.03 \
             > modulo-04-ia-generativa/P05-rag-confiable/P05_Velora_RAG_Confiable.ipynb
 
-          cat .m04-upload/P06.part1 .m04-upload/P06.part2 \
-            | base64 -d \
-            | gzip -d \
+          cat \
+            .m04-raw/P06.00 \
+            .m04-raw/P06.01_02 \
+            .m04-raw/P06.03_04 \
+            .m04-raw/P06.05_06 \
+            .m04-raw/P06.07 \
             > modulo-04-ia-generativa/P06-agentes-confiables/P06_Velora_Agentes_Bedrock_Mantle.ipynb
 
           python - <<'PY'
           import json
           from pathlib import Path
-          for p in [
-              Path('modulo-04-ia-generativa/P05-rag-confiable/P05_Velora_RAG_Confiable.ipynb'),
-              Path('modulo-04-ia-generativa/P06-agentes-confiables/P06_Velora_Agentes_Bedrock_Mantle.ipynb'),
-          ]:
-              json.loads(p.read_text(encoding='utf-8'))
-              print('Valid notebook:', p)
+
+          expected = {
+              Path('modulo-04-ia-generativa/P05-rag-confiable/P05_Velora_RAG_Confiable.ipynb'): 35,
+              Path('modulo-04-ia-generativa/P06-agentes-confiables/P06_Velora_Agentes_Bedrock_Mantle.ipynb'): 47,
+          }
+
+          for path, expected_cells in expected.items():
+              notebook = json.loads(path.read_text(encoding='utf-8'))
+              actual_cells = len(notebook['cells'])
+              if actual_cells != expected_cells:
+                  raise RuntimeError(
+                      f'{path}: expected {expected_cells} cells, got {actual_cells}'
+                  )
+              print('Valid notebook:', path, 'cells=', actual_cells)
           PY
 
-          rm -rf .m04-upload
+          rm -rf .m04-upload .m04-raw
 
       - name: Commit reconstructed notebooks
         shell: bash
         run: |
-          if [ ! -d modulo-04-ia-generativa/P05-rag-confiable ]; then
+          if [ ! -f modulo-04-ia-generativa/P05-rag-confiable/P05_Velora_RAG_Confiable.ipynb ]; then
             exit 0
           fi
 
