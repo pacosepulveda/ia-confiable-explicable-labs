@@ -13,8 +13,8 @@ En esta práctica se construirá un primer modelo de riesgo y se analizará su c
 
 ## Archivos
 
-- `data/velora_credit.csv.gz`
 - `labs/P01-modelo-base/P01_Velora_Modelo_Base.ipynb`
+- `resources/generate_velora_credit.py`
 
 ## Variables
 
@@ -40,7 +40,7 @@ No se utilizarán como predictores en esta práctica:
 
 ## Parte 1 — Revisar los datos
 
-1. Carga el dataset.
+1. Ejecuta la celda inicial para cargar el dataset.
 2. Comprueba número de filas, columnas y tipos de datos.
 3. Calcula la distribución de `default`.
 4. Determina el porcentaje de operaciones que terminaron en impago.
