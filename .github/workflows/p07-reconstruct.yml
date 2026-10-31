@@ -1,0 +1,46 @@
+name: Reconstruct P07 notebook
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct notebook
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="modulo-05-gobernanza-auditoria/P07-auditoria-end-to-end/P07_Velora_Auditoria_End_to_End.ipynb"
+          mkdir -p "$(dirname "$target")"
+          base64 -d .p07-build/notebook.ipynb.gz.b64 | gzip -d > "$target"
+          python - <<'PY'
+          import json
+          path = 'modulo-05-gobernanza-auditoria/P07-auditoria-end-to-end/P07_Velora_Auditoria_End_to_End.ipynb'
+          with open(path, encoding='utf-8') as f:
+              nb = json.load(f)
+          assert nb['nbformat'] == 4
+          assert len(nb['cells']) == 59
+          print('Notebook validated:', len(nb['cells']), 'cells')
+          PY
+
+      - name: Commit notebook and remove temporary build files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add modulo-05-gobernanza-auditoria/P07-auditoria-end-to-end/P07_Velora_Auditoria_End_to_End.ipynb
+          git rm .p07-build/notebook.ipynb.gz.b64
+          git rm .github/workflows/p07-reconstruct.yml
+          git commit -m "Add P07 audit notebook and remove temporary build files"
+          git push
