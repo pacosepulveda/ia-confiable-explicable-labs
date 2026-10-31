@@ -45,4 +45,4 @@ solutions/   Soluciones del instructor
 - **P06 — Agentes confiables con Amazon Bedrock Mantle**
 
 ### Módulo 5 — Gobernanza y auditoría
-- **P07 — Auditoría end-to-end** *(en preparación)*
+- **P07 — Auditoría end-to-end**
