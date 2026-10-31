@@ -41,8 +41,8 @@ solutions/   Soluciones del instructor
 - **P04B — Saliency e Integrated Gradients en visión**
 
 ### Módulo 4 — IA generativa confiable
-- **P05 — RAG confiable** *(en preparación)*
-- **P06 — Agentes, tools y trazabilidad** *(en preparación)*
+- **P05 — RAG confiable**
+- **P06 — Agentes confiables con Amazon Bedrock Mantle**
 
 ### Módulo 5 — Gobernanza y auditoría
 - **P07 — Auditoría end-to-end** *(en preparación)*
