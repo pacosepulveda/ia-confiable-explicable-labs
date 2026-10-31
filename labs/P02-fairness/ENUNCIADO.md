@@ -1,51 +1,58 @@
-# P02 — Auditoría de fairness del modelo de Velora Finance
+# P02 — Auditoría de fairness con Fairlearn
 
 ## Escenario
 
 En P01 se evaluó globalmente el modelo de riesgo de Velora Finance.
 
-En esta práctica se reutiliza el mismo dataset, la misma partición train/test y el mismo modelo para analizar su comportamiento por `customer_group`.
+En esta práctica se reutilizan el mismo dataset, la misma partición train/test y el mismo modelo para analizar su comportamiento por `customer_group`.
 
 `customer_group` no se utiliza como predictor.
 
-## Parte 1 — Contexto de los grupos
+## Parte 1 — Preparación
 
-Ejecuta las celdas iniciales y revisa para cada grupo:
+Ejecuta la instalación de `fairlearn==0.15.0` y recrea el modelo de P01.
+
+Comprueba que `customer_group` no forma parte de `FEATURES`.
+
+## Parte 2 — Contexto de los grupos
+
+Revisa para cada grupo:
 
 - número de solicitudes;
 - tasa real de impago;
-- probabilidad media de impago estimada.
+- riesgo medio predicho.
 
-## Parte 2 — Métricas desagregadas
+## Parte 3 — Auditoría con MetricFrame
 
-Con `threshold = 0.50`, compara:
+Para la auditoría se considera resultado favorable:
 
-- tasa de alto riesgo;
-- tasa de aprobación;
+```text
+solvente / aprobado = 1
+```
+
+Revisa las métricas globales y desagregadas calculadas por `MetricFrame`:
+
 - accuracy;
-- precision;
-- detección de impagos;
+- tasa de aprobación;
+- recall de clientes solventes;
+- precision de aprobación;
 - FPR;
-- FNR;
-- aprobación de clientes realmente solventes;
-- aprobación de operaciones que realmente terminan en impago.
+- FNR.
 
-Identifica qué métricas presentan las mayores diferencias.
+## Parte 4 — Criterios de fairness
 
-## Parte 3 — Criterios de fairness
+Compara:
 
-Revisa los diagnósticos calculados para:
+- demographic parity difference;
+- demographic parity ratio;
+- equal opportunity difference;
+- equalized odds difference.
 
-- demographic parity;
-- equal opportunity;
-- equalized odds;
-- diferencia en detección de impagos.
+Analiza si todos los criterios conducen a la misma conclusión.
 
-Compara las conclusiones que produciría cada criterio.
+## Parte 5 — Threshold
 
-## Parte 4 — Threshold
-
-Modifica únicamente el control:
+Modifica únicamente:
 
 ```python
 THRESHOLD_ELEGIDO
@@ -53,33 +60,22 @@ THRESHOLD_ELEGIDO
 
 Prueba varios valores entre `0.10` y `0.80`.
 
-Comprueba cómo cambian simultáneamente:
+Observa cómo cambian simultáneamente las métricas por grupo y los criterios de fairness.
 
-- rendimiento;
-- tasas de aprobación;
-- FPR y FNR;
-- diferencias entre grupos.
+## Parte 6 — Interpretación
 
-## Parte 5 — Atributo de auditoría
+Analiza:
 
-Comprueba que `customer_group` no forma parte de `FEATURES`.
-
-Analiza si la exclusión del atributo es suficiente para garantizar que no existan diferencias de comportamiento.
-
-## Parte 6 — Calibración
-
-Revisa la tabla y el gráfico de calibración por grupo.
-
-Compara:
-
-- riesgo medio predicho;
-- tasa de impago observada.
+- si existe un threshold que elimine todas las diferencias;
+- qué tipo de error resulta más relevante en este caso;
+- por qué excluir `customer_group` del entrenamiento no demuestra fairness;
+- qué información adicional sería necesaria antes de emitir una conclusión de auditoría.
 
 ## Resultado a conservar
 
 Al terminar la práctica, conserva:
 
 - tabla de métricas por grupo;
-- diagnósticos de fairness;
+- resultados de Fairlearn;
 - observaciones sobre el efecto del threshold;
-- gráfico de calibración.
+- conclusiones sobre los criterios que producen resultados diferentes.
