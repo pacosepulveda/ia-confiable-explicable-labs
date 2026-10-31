@@ -15,17 +15,22 @@ Laboratorio basado en el caso **Velora Finance**.
 - DP-SGD;
 - clipping por ejemplo;
 - ruido calibrado;
+- `noise_multiplier`;
+- `max_grad_norm`;
+- sampling y epochs;
 - presupuesto `(epsilon, delta)`;
+- contabilidad de epsilon por epoch;
 - comparación entre entrenamiento convencional y privado;
 - trade-off privacidad / utilidad;
 - comparación de utilidad por `customer_group`;
+- composición básica del presupuesto durante reentrenamientos;
 - relación entre Differential Privacy y Federated Learning;
 - limitaciones de Federated Learning como mecanismo de privacidad.
 
 ## Aceleración
 
-La práctica puede utilizar GPU T4 en Google Colab para el entrenamiento PyTorch/Opacus.
+La práctica utiliza GPU T4 en Google Colab cuando está disponible para el entrenamiento PyTorch/Opacus.
 
 ## Estado
 
-✅ Notebook guiado y ejecutable.
+✅ Notebook validado en Google Colab con GPU T4.
