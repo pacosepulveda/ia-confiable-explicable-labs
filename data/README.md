@@ -1,24 +1,12 @@
 # Datos de Velora Finance
 
-El repositorio incluye:
-
-```text
-data/velora_credit.csv.gz
-```
-
-Puede cargarse directamente con pandas:
-
-```python
-import pandas as pd
-
-df = pd.read_csv("data/velora_credit.csv.gz")
-```
-
-También puede regenerarse de forma reproducible desde la raíz del repositorio:
+El dataset utilizado en P01 se genera de forma reproducible mediante:
 
 ```bash
 python resources/generate_velora_credit.py
 ```
+
+El notebook `labs/P01-modelo-base/P01_Velora_Modelo_Base.ipynb` utiliza directamente la función `generate_dataset()` de ese script.
 
 ## Campos
 
@@ -37,8 +25,4 @@ python resources/generate_velora_credit.py
 | `customer_group` | Grupo sintético utilizado en análisis posteriores |
 | `default` | Variable objetivo: `1` = impago, `0` = no impago |
 
-## Tamaño y distribución
-
-La versión actual contiene 3.000 solicitudes generadas con semilla fija `42`.
-
-La tasa global de `default` es aproximadamente del 11,6%. `customer_group` no se utiliza como predictor en P01.
+La versión actual genera 3.000 solicitudes con semilla fija `42`. La tasa global de `default` es aproximadamente del 11,6%. `customer_group` no se utiliza como predictor en P01.
