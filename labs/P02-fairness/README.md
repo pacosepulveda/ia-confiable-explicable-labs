@@ -10,16 +10,17 @@ Laboratorio basado en el caso **Velora Finance**.
 
 ## Contenido
 
+- auditoría con Fairlearn 0.15.0;
+- `MetricFrame`;
 - métricas globales y desagregadas;
 - tasas base por grupo;
 - tasa de aprobación;
 - falsos positivos y falsos negativos;
-- detección de impagos por grupo;
-- demographic parity;
-- equal opportunity;
-- equalized odds;
+- demographic parity difference / ratio;
+- equal opportunity difference;
+- equalized odds difference;
 - sensibilidad de las métricas al threshold;
-- calibración por grupo.
+- exclusión del atributo de grupo del modelo y auditoría posterior.
 
 ## Variables
 
