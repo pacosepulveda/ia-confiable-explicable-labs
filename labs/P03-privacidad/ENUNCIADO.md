@@ -1,82 +1,90 @@
-# P03 — Privacidad, utilidad y aprendizaje distribuido
+# P03 — Differential Privacy con PyTorch y Opacus
 
 ## Escenario
 
-Velora Finance quiere obtener estadísticas y entrenar modelos utilizando datos distribuidos, limitando la exposición de información individual.
+Velora Finance quiere entrenar un modelo de riesgo reduciendo la influencia observable de cada registro individual en el modelo publicado.
 
-La práctica utiliza el mismo dataset sintético del caso Velora Finance.
+La práctica compara un entrenamiento convencional con el mismo tipo de modelo entrenado mediante **DP-SGD**.
 
-## Parte 1 — Consulta agregada
+## Parte 1 — Preparación
 
-Trabaja con el cohorte de auditoría de 600 solicitudes y calcula su tasa exacta de impago.
+Activa una GPU T4 en Google Colab si está disponible.
 
-## Parte 2 — Differential Privacy
+Instala:
 
-Ejecuta el mecanismo de Laplace preparado en el notebook.
-
-Modifica:
-
-```python
-EPSILON
+```text
+opacus==1.6.0
 ```
 
-Observa:
+El notebook detecta automáticamente si existe GPU.
 
-- tasa exacta;
-- tasa publicada con DP;
-- ruido añadido;
-- error absoluto.
+## Parte 2 — Dataset y modelo
 
-## Parte 3 — Privacidad y utilidad
+Genera una cohorte sintética de 30.000 solicitudes utilizando el mismo generador de Velora Finance.
 
-Ejecuta la simulación repetida para distintos valores de `epsilon`.
+Prepara las mismas variables predictoras utilizadas en P01 y P02.
 
-Compara:
+Entrena primero un modelo PyTorch convencional y conserva sus métricas de referencia.
 
-- error absoluto medio;
-- percentil 95 del error.
+## Parte 3 — Entrenamiento privado
 
-Analiza el trade-off entre privacidad y utilidad.
-
-## Parte 4 — Tamaño de grupo
-
-Modifica:
+Modifica únicamente:
 
 ```python
-EPSILON_GRUPOS
+TARGET_EPSILON
 ```
 
-Compara el efecto del mismo mecanismo sobre los diferentes grupos de auditoría.
+El entrenamiento privado utiliza Opacus con:
 
-## Parte 5 — Composición
+- DP-SGD;
+- clipping por ejemplo;
+- ruido calibrado;
+- contabilidad del presupuesto de privacidad;
+- `TARGET_DELTA = 1e-5`.
 
-Modifica:
+Compara el `epsilon` realmente gastado con el valor objetivo.
 
-```python
-EPSILON_POR_CONSULTA
-NUM_CONSULTAS
-```
+## Parte 4 — Privacidad y utilidad
 
-Observa cómo cambia la cota básica del presupuesto acumulado.
+Compara entre el modelo convencional y el privado:
+
+- ROC-AUC;
+- accuracy;
+- recall de impagos.
+
+Prueba, por ejemplo:
+
+- `epsilon = 1`;
+- `epsilon = 3`;
+- `epsilon = 8`.
+
+Analiza cómo cambia la utilidad al modificar la garantía de privacidad.
+
+## Parte 5 — Conexión con fairness
+
+Compara por `customer_group`:
+
+- recall de impagos;
+- ROC-AUC.
+
+Analiza si la pérdida de utilidad introducida por DP-SGD afecta de la misma forma a todos los grupos.
 
 ## Parte 6 — Federated Learning
 
-Ejecuta la simulación simplificada de entrenamiento distribuido.
+Revisa la comparación conceptual con Federated Learning.
 
-Revisa:
+Identifica por qué:
 
-- número de silos;
-- número de parámetros intercambiados;
-- filas brutas enviadas al agregador;
-- ROC-AUC obtenida.
-
-Identifica qué riesgos de privacidad permanecen aunque los datos brutos no se centralicen.
+- evitar centralizar datos brutos no equivale a obtener Differential Privacy;
+- las actualizaciones del modelo también pueden filtrar información;
+- FL y DP son técnicas complementarias y no intercambiables.
 
 ## Resultado a conservar
 
 Al terminar la práctica, conserva:
 
-- tabla privacidad/utilidad;
-- resultados por grupo;
-- presupuesto acumulado utilizado en el ejemplo;
-- conclusiones sobre las diferencias entre Differential Privacy y Federated Learning.
+- métricas del modelo convencional;
+- `(epsilon, delta)` del entrenamiento privado;
+- métricas del modelo DP-SGD;
+- comparación de utilidad por grupo;
+- conclusiones sobre el trade-off privacidad / utilidad.
