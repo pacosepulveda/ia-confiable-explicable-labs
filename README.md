@@ -14,5 +14,5 @@ data/        Datasets compartidos
 ## Laboratorios
 
 - **P01 — Construcción y evaluación del modelo base**
-
-Los siguientes laboratorios se irán incorporando progresivamente.
+- **P02 — Auditoría de fairness**
+- **P03 — Privacidad, utilidad y aprendizaje distribuido**
