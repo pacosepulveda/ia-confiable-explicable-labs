@@ -1,5 +1,6 @@
 name: Reconstruct M04 notebooks
 
+# Final reconstruction after all verified raw chunks are present.
 on:
   push:
     paths:
