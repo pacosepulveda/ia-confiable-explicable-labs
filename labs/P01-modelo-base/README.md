@@ -19,6 +19,7 @@ Laboratorio basado en el caso **Velora Finance**.
 - recall;
 - F1;
 - ROC-AUC;
+- Average Precision (AP);
 - PR-AUC;
 - probabilidades y threshold;
 - comparación de falsos positivos y falsos negativos;
