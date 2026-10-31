@@ -38,9 +38,12 @@ jobs:
 
           cat \
             .m04-raw/P06.00 \
-            .m04-raw/P06.01_02 \
-            .m04-raw/P06.03_04 \
-            .m04-raw/P06.05_06 \
+            .m04-raw/P06.01 \
+            .m04-raw/P06.02 \
+            .m04-raw/P06.03 \
+            .m04-raw/P06.04 \
+            .m04-raw/P06.05 \
+            .m04-raw/P06.06 \
             .m04-raw/P06.07 \
             > modulo-04-ia-generativa/P06-agentes-confiables/P06_Velora_Agentes_Bedrock_Mantle.ipynb
 
