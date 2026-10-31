@@ -12,18 +12,23 @@ Laboratorio basado en el caso **Velora Finance**.
 
 - carga y revisión del dataset;
 - separación train/test;
-- entrenamiento de un primer modelo de riesgo de crédito;
+- entrenamiento de un modelo base de riesgo de crédito;
+- probabilidades y threshold;
 - matriz de confusión;
 - accuracy;
 - precision;
 - recall;
 - F1;
-- ROC-AUC;
-- Average Precision (AP);
-- PR-AUC;
-- probabilidades y threshold;
-- comparación de falsos positivos y falsos negativos;
-- revisión de errores concretos del modelo.
+- comparación de thresholds;
+- falsos positivos y falsos negativos;
+- revisión de errores concretos;
+- ROC-AUC, Average Precision y Precision-Recall como extensión.
+
+## Notebook
+
+`P01_Velora_Modelo_Base.ipynb` contiene el código completo y las explicaciones necesarias para interpretar cada bloque y sus resultados. El alumno puede ejecutar la práctica de principio a fin sin escribir código.
+
+La única modificación propuesta durante la práctica es cambiar el valor de `THRESHOLD_ELEGIDO` para comparar el efecto de distintos umbrales.
 
 ## Variables del modelo
 
@@ -53,12 +58,8 @@ default
 
 ## Dataset
 
-El dataset contiene 3.000 solicitudes sintéticas y se genera de forma reproducible con semilla `42` mediante `resources/generate_velora_credit.py`. El notebook carga ese generador directamente desde el repositorio y crea el `DataFrame` utilizado en la práctica.
+El dataset contiene 3.000 solicitudes sintéticas y se genera de forma reproducible con semilla `42` mediante `resources/generate_velora_credit.py`.
 
 ## Estado
 
-✅ Enunciado y notebook del alumno preparados.
-
-Pendiente:
-
-- solución del instructor.
+✅ Notebook guiado y ejecutable preparado.
