@@ -6,7 +6,7 @@ Laboratorio basado en el caso **Velora Finance**.
 
 - `ENUNCIADO.md`
 - `P01_Velora_Modelo_Base.ipynb`
-- `../../data/velora_credit.csv.gz`
+- `../../resources/generate_velora_credit.py`
 
 ## Contenido
 
@@ -53,17 +53,7 @@ default
 
 ## Dataset
 
-El dataset incluido contiene 3.000 solicitudes sintéticas y se genera de forma reproducible con semilla `42` mediante:
-
-```bash
-python resources/generate_velora_credit.py
-```
-
-El fichero generado es:
-
-```text
-data/velora_credit.csv.gz
-```
+El dataset contiene 3.000 solicitudes sintéticas y se genera de forma reproducible con semilla `42` mediante `resources/generate_velora_credit.py`. El notebook carga ese generador directamente desde el repositorio y crea el `DataFrame` utilizado en la práctica.
 
 ## Estado
 
