@@ -82,7 +82,8 @@ Calcula:
 - recall;
 - F1;
 - ROC-AUC;
-- PR-AUC.
+- Average Precision (AP);
+- PR-AUC, calculada como el área bajo la curva Precision-Recall.
 
 A partir de la matriz de confusión identifica:
 
@@ -142,8 +143,9 @@ Representa:
 Incluye:
 
 - ROC-AUC;
+- Average Precision (AP);
 - PR-AUC;
-- proporción de la clase positiva como referencia para interpretar PR-AUC.
+- proporción de la clase positiva como referencia para interpretar la curva Precision-Recall.
 
 ## Parte 7 — Revisar errores concretos
 
