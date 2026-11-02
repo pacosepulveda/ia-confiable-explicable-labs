@@ -6,7 +6,7 @@ El dataset utilizado en P01 se genera de forma reproducible mediante:
 python resources/generate_velora_credit.py
 ```
 
-El notebook `labs/P01-modelo-base/P01_Velora_Modelo_Base.ipynb` utiliza directamente la función `generate_dataset()` de ese script.
+El notebook [`P01_Velora_Modelo_Base.ipynb`](../modulo-01-fundamentos/P01-modelo-base/P01_Velora_Modelo_Base.ipynb) utiliza directamente la función `generate_dataset()` de ese script.
 
 ## Campos
 
@@ -25,4 +25,4 @@ El notebook `labs/P01-modelo-base/P01_Velora_Modelo_Base.ipynb` utiliza directam
 | `customer_group` | Grupo sintético utilizado en análisis posteriores |
 | `default` | Variable objetivo: `1` = impago, `0` = no impago |
 
-La versión actual genera 3.000 solicitudes con semilla fija `42`. La tasa global de `default` es aproximadamente del 11,6%. `customer_group` no se utiliza como predictor en P01.
+La versión actual genera 3.000 solicitudes con semilla fija `42`. La tasa global de `default` es aproximadamente del 11,6 %. `customer_group` no se utiliza como predictor en P01.

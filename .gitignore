@@ -4,3 +4,6 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Generated course data
+data/velora_credit.csv.gz
