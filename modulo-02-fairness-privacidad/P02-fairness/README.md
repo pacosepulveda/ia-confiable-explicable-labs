@@ -2,6 +2,14 @@
 
 Laboratorio basado en el caso **Velora Finance**.
 
+## 🚀 Abrir en Google Colab
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pacosepulveda/ia-confiable-explicable-labs/blob/main/modulo-02-fairness-privacidad/P02-fairness/P02_Velora_Fairness.ipynb)
+
+📋 [Leer el enunciado](./ENUNCIADO.md)
+
+Al abrir el notebook en Colab, usa **Archivo → Guardar una copia en Drive** para trabajar sobre tu propia copia y conservar los cambios.
+
 ## Archivos
 
 - `ENUNCIADO.md`
@@ -30,6 +38,8 @@ Laboratorio basado en el caso **Velora Finance**.
 `customer_group` no se utiliza como predictor del modelo base. Se utiliza como atributo de auditoría y, en la fase de mitigación, como `sensitive_features` del postprocesador.
 
 ## Dependencias
+
+Las dependencias específicas se instalan desde el propio notebook cuando es necesario.
 
 - scikit-learn
 - Fairlearn 0.15.0

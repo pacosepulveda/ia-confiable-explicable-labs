@@ -2,11 +2,17 @@
 
 Laboratorio basado en el caso **Velora Finance**.
 
-## Archivos
+## 🚀 Abrir en Google Colab
 
-- `ENUNCIADO.md`
-- `P03_Velora_Privacidad.ipynb`
-- `../../resources/generate_velora_credit.py`
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pacosepulveda/ia-confiable-explicable-labs/blob/main/modulo-02-fairness-privacidad/P03-privacidad/P03_Velora_Privacidad.ipynb)
+
+📋 [Leer el enunciado](./ENUNCIADO.md)
+
+Al abrir el notebook en Colab, usa **Archivo → Guardar una copia en Drive** para conservar tus cambios.
+
+## Aceleración recomendada
+
+Activa **Entorno de ejecución → Cambiar tipo de entorno de ejecución → GPU T4** antes de ejecutar el entrenamiento PyTorch/Opacus.
 
 ## Contenido
 
@@ -26,10 +32,6 @@ Laboratorio basado en el caso **Velora Finance**.
 - composición básica del presupuesto durante reentrenamientos;
 - relación entre Differential Privacy y Federated Learning;
 - limitaciones de Federated Learning como mecanismo de privacidad.
-
-## Aceleración
-
-La práctica utiliza GPU T4 en Google Colab cuando está disponible para el entrenamiento PyTorch/Opacus.
 
 ## Estado
 
